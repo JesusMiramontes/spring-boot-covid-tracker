@@ -19,7 +19,7 @@ public class CovidDataService {
     private static final String DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
     @PostConstruct // Execute this method after the class is constructed.
-    @Scheduled(cron = "* * * * * *") // Second Minute Hour Day Month Year
+    @Scheduled(cron = "* * 1 * * *") // Second Minute Hour Day Month Year. This will run the first hour of every day.
     public void fetchData() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
