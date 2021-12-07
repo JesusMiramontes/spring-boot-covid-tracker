@@ -1,6 +1,7 @@
 package com.miramontes.covidcasestracker.services;
 
 import com.miramontes.covidcasestracker.models.LocationStat;
+import lombok.Getter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,6 +22,7 @@ public class CovidDataService {
 
     private static final String DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
+    @Getter
     private List<LocationStat> currentStats = new ArrayList<>();
 
     @PostConstruct // Execute this method after the class is constructed.
