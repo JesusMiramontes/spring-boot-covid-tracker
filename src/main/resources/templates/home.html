@@ -10,7 +10,9 @@
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Covid Cases Tracker</h1>
         <p class="col-md-8 fs-4">Total cases reported:</p>
-        <p class="lead" th:text="${totalReportedCases}">123123</p>
+        <p class="lead" th:text="${totalReportedCases}"></p>
+        <p class="col-md-8 fs-4">New cases today:</p>
+        <p class="lead" th:text="${newTotalCasesToday}"></p>
     </div>
 </div>
 <div class="container">
@@ -19,11 +21,13 @@
             <th>State</th>
             <th>Country</th>
             <th>Total cases</th>
+            <th>Changes since last day</th>
         </tr>
         <tr th:each="stat : ${locationStats}">
             <td th:text="${stat.state}"></td>
             <td th:text="${stat.country}"></td>
             <td th:text="${stat.latestTotalCases}"></td>
+            <td th:text="${stat.diffFromPrevDayCases}"></td>
         </tr>
     </table>
 </div>

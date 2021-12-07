@@ -19,8 +19,10 @@ public class HomeController {
     public String home(Model model){
         List<LocationStat> currentStats = covidDataService.getCurrentStats();
         int totalReportedCases = currentStats.stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
+        int newTotalCasesToday = currentStats.stream().mapToInt(stat -> stat.getDiffFromPrevDayCases()).sum();
         model.addAttribute("locationStats", currentStats);
         model.addAttribute("totalReportedCases", totalReportedCases);
+        model.addAttribute("newTotalCasesToday", newTotalCasesToday);
 
         // This looks up for this html file at templates folder.
         return "home";
